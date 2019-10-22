@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Test;
 
 import javax.sql.DataSource;
 
+import java.sql.SQLException;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class MemberDaoTest {
@@ -11,7 +13,7 @@ public class MemberDaoTest {
     private DataSource dataSource;
 
     @Test
-    void shouldFindSavedMembers() {
+    void shouldFindSavedMembers() throws SQLException {
         Member member = new Member();
         MemberDao dao = new MemberDao(dataSource);
 

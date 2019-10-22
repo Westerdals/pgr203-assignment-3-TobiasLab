@@ -15,9 +15,9 @@ public abstract class AbstractDao<T> {
         this.dataSource = dataSource;
     }
 
-    public void insert(T project) throws SQLException {
+    public void insert(T project, String sql1) throws SQLException {
         try (Connection connection = dataSource.getConnection()) {
-            String sql = "insert into projects (name) values (?)";
+            String sql = sql1;
             try (PreparedStatement stmt = connection.prepareStatement(sql)) {
                 insertObject(project, stmt);
                 stmt.executeUpdate();
@@ -27,9 +27,9 @@ public abstract class AbstractDao<T> {
 
     protected abstract void insertObject(T project, PreparedStatement stmt) throws SQLException;
 
-    public List<T> listAll() throws SQLException {
+    public List<T> listAll(String sql) throws SQLException {
         try (Connection connection = dataSource.getConnection()) {
-            try (PreparedStatement stmt = connection.prepareStatement("select * from projects")) {
+            try (PreparedStatement stmt = connection.prepareStatement(sql)) {
                 try (ResultSet rs = stmt.executeQuery()) {
                     List<T> projects = new ArrayList<>();
                     while (rs.next()) {
