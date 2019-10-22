@@ -1,5 +1,5 @@
 package no.kristiania;
 
-public class Project {
+public class ProjectDao {
 
 }
