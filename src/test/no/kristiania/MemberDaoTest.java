@@ -15,6 +15,7 @@ public class MemberDaoTest {
     @Test
     void shouldFindSavedMembers() throws SQLException {
         Member member = new Member();
+        member.setName("Test");
         MemberDao dao = new MemberDao(dataSource);
 
         dao.insert(member);
