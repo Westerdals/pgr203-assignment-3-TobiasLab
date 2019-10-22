@@ -36,7 +36,7 @@ public abstract class AbstractDao<T> {
                 try (ResultSet rs = stmt.executeQuery()) {
                     List<T> projects = new ArrayList<>();
                     while (rs.next()) {
-                        projects.add(readObject(rs));
+                        projects.add(readFromDb(rs));
                     }
                     return projects;
                 }
@@ -44,5 +44,5 @@ public abstract class AbstractDao<T> {
         }
     }
 
-    protected abstract T readObject(ResultSet rs) throws SQLException;
+    protected abstract T readFromDb(ResultSet rs) throws SQLException;
 }

@@ -20,10 +20,12 @@ public class ProjectDao extends AbstractDao<Project> {
     }
 
 
+
     @Override
-    protected Project readObject(ResultSet rs) throws SQLException {
-        String name = rs.getString("name");
-        return new Project();
+    protected Project readFromDb(ResultSet rs) throws SQLException {
+        Project project = new Project();
+        project.setName(rs.getString("name"));
+        return project;
 
     }
 
