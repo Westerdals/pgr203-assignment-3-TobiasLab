@@ -18,12 +18,12 @@ public class Main {
 
     public Main() throws IOException {
         Properties properties = new Properties();
-        properties.load(new FileReader("main.properties"));
+        properties.load(new FileReader("task-manager.properties"));
 
         PGSimpleDataSource dataSource = new PGSimpleDataSource();
 
-        dataSource.setUrl("jdbc:postgresql://localhost:5432/myprojectdb");
-        dataSource.setUser("projectuser");
+        dataSource.setUrl(properties.getProperty("dataSource.url"));
+        dataSource.setUser(properties.getProperty("dataSource.user"));
         dataSource.setPassword(properties.getProperty("dataSource.password"));
 
         Flyway.configure().dataSource(dataSource).load().migrate();
