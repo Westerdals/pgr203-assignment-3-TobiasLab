@@ -8,17 +8,14 @@ import java.util.List;
 
 public class MemberDao extends AbstractDao<Member> {
 
-
     public MemberDao(DataSource dataSource) {
         super(dataSource);
     }
-
 
     @Override
     protected void insertObject(Member member, PreparedStatement stmt) throws SQLException {
         stmt.setString(1, member.getName());
     }
-
 
     @Override
     protected Member readObject(ResultSet rs) throws SQLException {
@@ -32,6 +29,6 @@ public class MemberDao extends AbstractDao<Member> {
     }
 
     public List<Member> listAll() throws SQLException {
-        return listAll("select * from products");
+        return listAll("select * from members");
     }
 }
