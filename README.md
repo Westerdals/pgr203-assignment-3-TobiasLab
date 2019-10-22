@@ -6,11 +6,10 @@
 
 ## Usage
 
-1. <Hvilken kommando bruker man for å bygge prosjektet>
-2. <Hvilken kommando bruker man for å programmet>
+1. <To compile the project you need to open up the in-build IntelliJ terminal and use the command "mvn package" to make the executable jar file. >
+2. <To run the program you need to use the in-build terminal again and use the command "-jar target/filename.jar">
 3. <Hvordan oppretter man en ny prosjektdeltager?>
-4. <VALGFRITT: Hvordan oppretter man en ny prosjektoppgave>
-5. <VALGFRITT: Hvordan bruker man http server til å opprette data?> 
+
  
  ## Design (valgfritt)
  
