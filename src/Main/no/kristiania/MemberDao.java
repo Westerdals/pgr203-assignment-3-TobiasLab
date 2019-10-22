@@ -24,11 +24,12 @@ public class MemberDao extends AbstractDao<Member> {
         return member;
     }
 
-    public void insert(Member project) throws SQLException {
-        insert(project, "insert into members (name) values (?)");
+    public void insert(Member member) throws SQLException {
+        insert(member, "insert into members (name) values (?)");
     }
 
     public List<Member> listAll() throws SQLException {
         return listAll("select * from members");
     }
+
 }

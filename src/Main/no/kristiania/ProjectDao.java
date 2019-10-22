@@ -19,6 +19,7 @@ public class ProjectDao extends AbstractDao<Project> {
         stmt.setString(1, project.getName());
     }
 
+
     @Override
     protected Project readObject(ResultSet rs) throws SQLException {
         String name = rs.getString("name");

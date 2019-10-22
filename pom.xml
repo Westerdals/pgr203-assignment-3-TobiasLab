@@ -53,6 +53,18 @@
             <artifactId>postgresql</artifactId>
             <version>42.2.8</version>
         </dependency>
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+            <version>6.0.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.logevents</groupId>
+            <artifactId>logevents</artifactId>
+            <version>0.1.22</version>
+        </dependency>
+
+
     </dependencies>
 
 </project>

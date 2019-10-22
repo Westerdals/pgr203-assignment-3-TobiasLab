@@ -1,5 +1,6 @@
 package no.kristiania;
 
+import org.flywaydb.core.Flyway;
 import org.h2.jdbcx.JdbcDataSource;
 import org.junit.jupiter.api.Test;
 
@@ -13,11 +14,9 @@ public class ProjectDaoTest {
     @Test
     void shouldListInsertedProducts() throws SQLException {
         JdbcDataSource dataSource = new JdbcDataSource();
-        dataSource.setUrl("jdbc:h2:mem:myTestDatabase");
+        dataSource.setUrl("jdbc:h2:mem:myTestDatabase;DB_CLOSE_DELAY=-1");
 
-        dataSource.getConnection().createStatement().executeUpdate(
-                "create table PROJECTS (id serial primary key, name varchar(1000) not null)"
-        );
+        Flyway.configure().dataSource(dataSource).load().migrate();
 
         ProjectDao  dao = new ProjectDao(dataSource);
         Project project = sampleProject();

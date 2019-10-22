@@ -28,7 +28,7 @@ public abstract class AbstractDao<T> {
         }
     }
 
-    protected abstract void insertObject(T project, PreparedStatement stmt) throws SQLException;
+    protected abstract void insertObject(T projects, PreparedStatement stmt) throws SQLException;
 
     public List<T> listAll(String sql) throws SQLException {
         try (Connection connection = dataSource.getConnection()) {
