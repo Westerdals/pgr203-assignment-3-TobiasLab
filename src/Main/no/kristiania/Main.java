@@ -31,7 +31,7 @@ public class Main {
         new Main().run();
     }
 
-    private static void run() throws IOException, SQLException {
+    private void run() throws IOException, SQLException {
         System.out.println("Choose action: create [project]|create [member]");
         String action = input.readLine();
 
@@ -49,7 +49,7 @@ public class Main {
 
     private void insertMember() throws IOException, SQLException {
         System.out.println("Please type the name of a new member");
-        Member member = new member();
+        Member member = new Member();
         member.setName(input.readLine());
         memberDao.insert(member);
     }
