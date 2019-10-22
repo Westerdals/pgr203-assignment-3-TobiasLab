@@ -25,7 +25,7 @@ public class MemberDao extends AbstractDao<Member> {
     }
 
     public void insert(Member project) throws SQLException {
-        insert(project, "inserts into projects (name) values (?)");
+        insert(project, "insert into members (name) values (?)");
     }
 
     public List<Member> listAll() throws SQLException {

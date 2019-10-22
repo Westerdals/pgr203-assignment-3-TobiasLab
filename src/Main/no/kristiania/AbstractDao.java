@@ -15,12 +15,16 @@ public abstract class AbstractDao<T> {
         this.dataSource = dataSource;
     }
 
-    public void insert(T project, String sql1) throws SQLException {
+    public long insert(T project, String sql1) throws SQLException {
         try (Connection connection = dataSource.getConnection()) {
             String sql = sql1;
-            try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            try (PreparedStatement stmt = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
                 insertObject(project, stmt);
                 stmt.executeUpdate();
+
+                ResultSet generatedKeys = stmt.getGeneratedKeys();
+                generatedKeys.next();
+                return generatedKeys.getLong(1);
             }
         }
     }
