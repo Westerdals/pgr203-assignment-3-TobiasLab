@@ -16,17 +16,17 @@ public class ProjectDaoTest {
         dataSource.setUrl("jdbc:h2:mem:myTestDatabase");
 
         dataSource.getConnection().createStatement().executeUpdate(
-                "create table PROJECTS (id serial primary key, name varcahr(1000) not null)"
+                "create table PROJECTS (id serial primary key, name varchar(1000) not null)"
         );
 
         ProjectDao  dao = new ProjectDao(dataSource);
-        String project = new sampleProject();
+        Project project = sampleProject();
         dao.insert(project);
         assertThat(dao.listAll())
                 .contains(project);
     }
 
-    private String sampleProject() {
+    private Project sampleProject() {
         Project project = new Project();
         project.setName(sampleProjectName());
         return project;

@@ -6,27 +6,31 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-public class ProjectDao extends AbstractDao<String> {
+public class ProjectDao extends AbstractDao<Project> {
 
     public ProjectDao(DataSource dataSource) {
         super(dataSource);
     }
 
-    @Override
-    protected void insertObject(String project, PreparedStatement stmt) throws SQLException {
-        stmt.setString(1, project);
-    }
+
 
     @Override
-    protected String readObject(ResultSet rs) throws SQLException {
-        return rs.getString("name");
+    protected void insertObject(Project project, PreparedStatement stmt) throws SQLException {
+        stmt.setString(1, project.getName());
     }
 
-    public void insert(String project) throws SQLException {
-        insert(project, "inserts into projects (name) values (?)");
+    @Override
+    protected Project readObject(ResultSet rs) throws SQLException {
+        String name = rs.getString("name");
+        return new Project();
+
     }
 
-    public List<String> listAll() throws SQLException {
-        return listAll("select * from products");
+    public void insert(Project project) throws SQLException {
+        insert(project, "insert into projects (name) values (?)");
+    }
+
+    public List<Project> listAll() throws SQLException {
+        return listAll("select * from projects");
     }
 }
