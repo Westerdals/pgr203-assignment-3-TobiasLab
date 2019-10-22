@@ -1,4 +1,4 @@
-# <Arbeidskrav PGR203>
+# <*Arbeidskrav PGR203*>
 
 [![Build Status](https://travis-ci.com/Westerdals/pgr203-assignment-3-TobiasLab.svg?branch=master)](https://travis-ci.com/Westerdals/pgr203-assignment-3-TobiasLab)
 
