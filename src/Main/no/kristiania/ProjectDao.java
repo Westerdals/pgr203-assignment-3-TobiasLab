@@ -39,7 +39,8 @@ public class ProjectDao extends AbstractDao<Project> {
 
     public Project retrieve(long id) throws SQLException {
         try (Connection connection = dataSource.getConnection()) {
-            try (PreparedStatement stmt = connection.prepareStatement("select * from projects")) {
+            try (PreparedStatement stmt = connection.prepareStatement("select * from projects where id = ?")) {
+                stmt.setLong(1, id);
                 try (ResultSet rs = stmt.executeQuery()) {
                     if (rs.next()) {
                         return readFromDb(rs);
