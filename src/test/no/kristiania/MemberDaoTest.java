@@ -16,7 +16,7 @@ public class MemberDaoTest {
         dataSource.setUrl("jdbc:h2:mem:myTestDatabase");
 
         dataSource.getConnection().createStatement().executeUpdate(
-                "create table MEMBERS (name varchar(1000) not null)"
+                "create table MEMBERS (id serial primary key, name varchar(1000) not null)"
         );
 
         Member member = new Member();

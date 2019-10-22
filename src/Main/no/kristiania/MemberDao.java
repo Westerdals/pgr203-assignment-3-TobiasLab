@@ -20,7 +20,7 @@ public class MemberDao extends AbstractDao<Member> {
     @Override
     protected Member readObject(ResultSet rs) throws SQLException {
         Member member = new Member();
-        member.setName(rs.getString(1));
+        member.setName(rs.getString("name"));
         return member;
     }
 
