@@ -1,4 +1,5 @@
 package no.kristiania;
+import org.flywaydb.core.Flyway;
 import org.postgresql.ds.PGSimpleDataSource;
 
 import java.io.BufferedReader;
@@ -24,6 +25,8 @@ public class Main {
         dataSource.setUrl("jdbc:postgresql://localhost:5432/myprojectdb");
         dataSource.setUser("projectuser");
         dataSource.setPassword(properties.getProperty("dataSource.password"));
+
+        Flyway.configure().dataSource(dataSource).load().migrate();
 
         projectDao = new ProjectDao(dataSource);
         memberDao = new MemberDao(dataSource);
