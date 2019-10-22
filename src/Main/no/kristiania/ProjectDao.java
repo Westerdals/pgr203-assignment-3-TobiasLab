@@ -8,35 +8,19 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProjectDao {
-
-    private DataSource dataSource;
+public class ProjectDao extends AbstractDao {
 
     public ProjectDao(DataSource dataSource) {
-        this.dataSource = dataSource;
+        super(dataSource);
     }
 
-    public void insert(String project) throws SQLException {
-        try (Connection connection = dataSource.getConnection()) {
-            String sql = "insert into projects (name) values (?)";
-            try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-                stmt.setString(1, project);
-                stmt.executeUpdate();
-            }
-        }
+    @Override
+    protected void insertObject(String project, PreparedStatement stmt) throws SQLException {
+        stmt.setString(1, project);
     }
 
-    public List<String> listAll() throws SQLException {
-        try (Connection connection = dataSource.getConnection()) {
-            try (PreparedStatement stmt = connection.prepareStatement("select * from projects")) {
-                try (ResultSet rs = stmt.executeQuery()) {
-                    List<String> projects = new ArrayList<>();
-                    while (rs.next()) {
-                        projects.add(rs.getString("name"));
-                    }
-                    return projects;
-                }
-            }
-        }
+    @Override
+    protected String readObject(ResultSet rs) throws SQLException {
+        return rs.getString("name");
     }
 }
