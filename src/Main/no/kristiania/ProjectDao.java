@@ -1,9 +1,11 @@
 package no.kristiania;
 
 import javax.sql.DataSource;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProjectDao extends AbstractDao<Project> {
@@ -27,11 +29,25 @@ public class ProjectDao extends AbstractDao<Project> {
 
     }
 
-    public void insert(Project project) throws SQLException {
-        insert(project, "insert into projects (name) values (?)");
+    public long insert(Project project) throws SQLException {
+       return insert(project, "insert into projects (name) values (?)");
     }
 
     public List<Project> listAll() throws SQLException {
         return listAll("select * from projects");
+    }
+
+    public Project retrieve(long id) throws SQLException {
+        try (Connection connection = dataSource.getConnection()) {
+            try (PreparedStatement stmt = connection.prepareStatement("select * from projects")) {
+                try (ResultSet rs = stmt.executeQuery()) {
+                    if (rs.next()) {
+                        return readFromDb(rs);
+                    } else {
+                        return null;
+                    }
+                }
+            }
+        }
     }
 }

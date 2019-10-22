@@ -36,6 +36,15 @@ public class ProjectDaoTest {
                 .contains(project);
     }
 
+    @Test
+    public void shouldSaveAllProjects() throws SQLException {
+        ProjectDao dao = new ProjectDao(dataSource);
+        Project project = sampleProject();
+        long id = dao.insert(project);
+        assertThat(dao.retrieve(id))
+                .isEqualToComparingFieldByField(project);
+    }
+
     private Project sampleProject() {
         Project project = new Project();
         project.setName(sampleProjectName());
