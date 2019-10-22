@@ -21,7 +21,9 @@ public class Main {
 
         PGSimpleDataSource dataSource = new PGSimpleDataSource();
 
-
+        dataSource.setUrl("jdbc:postgresql://localhost:5432/myprojectdb");
+        dataSource.setUser("projectuser");
+        dataSource.setPassword(properties.getProperty("dataSource.password"));
 
         projectDao = new ProjectDao(dataSource);
         memberDao = new MemberDao(dataSource);
