@@ -3,4 +3,4 @@
 *.docx.idea
 *.iml
 target/
-
+task-manager.properties
