@@ -17,7 +17,7 @@ Vårt prosjekt skal kunne opprette prosjekter og prosjektdeltagere(members)
 Hva gjorde dere godt i implementasjonen
 
 Vi fikk ikke til å liste ut prosjektmedlemmer.
-Maven kjører fint i IntelliJ, men får "no tests to run" i Travis-ci
+Maven kjører fint i IntelliJ og kjører som den skal i travis-ci
 
 ## Link to review
 
