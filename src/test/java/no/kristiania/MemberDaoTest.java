@@ -20,7 +20,8 @@ public class MemberDaoTest {
         dataSource.setUrl("jdbc:h2:mem:myTestDatabase");
         dataSource.getConnection().createStatement().executeUpdate(
                 "create table if not exists MEMBERS (" +
-                        "id serial primary key, name varchar(100) not null" + ")"
+                        "id serial primary key, name varchar(100) not null," +
+                        " email varchar(100) not null" + ")"
         );
         dao = new MemberDao(dataSource);
     }
@@ -29,6 +30,7 @@ public class MemberDaoTest {
     void shouldFindSavedMembers() throws SQLException {
         Member member = new Member();
         member.setName("Test");
+        member.setEmail("Test");
         MemberDao dao = new MemberDao(dataSource);
 
         dao.insert(member);
