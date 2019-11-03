@@ -56,6 +56,8 @@ public class Main {
         System.out.println("Please type the name of a new member");
         Member member = new Member();
         member.setName(input.readLine());
+        System.out.println("Please type the email of the new member");
+        member.setEmail(input.readLine());
         memberDao.insert(member);
     }
 
