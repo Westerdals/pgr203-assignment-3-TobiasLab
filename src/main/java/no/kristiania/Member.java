@@ -44,6 +44,9 @@ public class Member {
                 '}';
     }
 
+
+    // Old code. This was used to print out the proper names when running the code, but only with name.
+    // Code @line 25-45 now works with both name and email.
     /*
     @Override
     public boolean equals(Object o) {
